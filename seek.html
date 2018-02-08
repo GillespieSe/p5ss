@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+    
+    <script>
+    var value = "pink"
+    var two = 1
+    var s = 'Get to the Yellow without touching the red'
+    var x = 220
+    var y = 500
+    var a
+    var b
+    var c
+    let timer = 5 // The maximum amount of time the timer has before it hits 0
+    
+    
+        function setup() {
+            createCanvas(800,600);
+            tabs = new Elo(1,5,255,0,0);
+        // Ellipses that will move upon the screen for the object "Elo"
+        a = new Elo(2,2.5,0,0,255);
+        b = new Elo(2,2.5,0,0,255);
+        c = new Elo(2,2.5,0,0,255);
+            fill("Blue")
+           text(s,233,22,100,620)
+        }
+
+        function draw() {
+            
+        a.move();
+        a.display();
+        b.move();
+        b.display();
+        c.move();
+        c.display();
+        /* Directional coding for the arrows keys controlling the positions of where the ellipse moves on the screen */
+            if (keyIsDown(LEFT_ARROW)) { 
+            x -= 2.5
+        }
+        if (keyIsDown(RIGHT_ARROW)) {
+            x += 2.5
+        }
+        if (keyIsDown(UP_ARROW)) {
+            y -= 2.5
+        }
+        if (keyIsDown(DOWN_ARROW)) {
+            y += 2.5
+        }
+        clear()
+        fill("black")
+        ellipse(x,y,30,30) // The ellipse that the player can control
+        
+        
+           
+        // Bunch of ellipses that will be seen on screen.
+        //Ellipses that are red will function as collision with the player's controlled ellipse.
+        //Yellow ellipse will count as winning in the game.
+        
+        fill("red")
+        ellipse(220,405,90,90)
+        fill("Red")
+        ellipse(220,310,90,90)
+        ellipse(120,300,90,90)
+        ellipse(300,500,90,90)
+        ellipse(550,300,90,90)
+        ellipse(650,300,90,90)
+        ellipse(750,300,90,90)
+        ellipse(300,100,90,90)
+        fill("yellow")
+        ellipse(220,213,90,90)
+        ellipse(300,300,90,90)
+        
+        fill("red")
+        ellipse(321,210,90,90)
+        
+        
+        
+        fill("red")
+        ellipse(420,310,90,90)
+        
+        fill("red")
+        ellipse(420,505,90,90)
+       
+        fill("red")
+        ellipse(520,500,90,90)
+        ellipse(100,100,90,90)
+        ellipse(200,100,90,90)
+        ellipse(300,100,90,90)
+        ellipse(400,100,90,90)
+        ellipse(500,100,90,90)
+        ellipse(600,100,90,90)
+        ellipse(700,100,90,90)
+        ellipse(100,200,90,90)
+        ellipse(100,400,90,90)
+        ellipse(100,500,90,90)
+        ellipse(100,0,90,90)
+        ellipse(200,0,90,90)
+        ellipse(300,0,90,90)
+        ellipse(400,0,90,90)
+        ellipse(500,0,90,90)
+        ellipse(600,0,90,90)
+        ellipse(700,0,90,90)
+        
+        ellipse(300,300,90,90)
+        ellipse(400,400,90,90)
+        
+        ellipse(600,600,90,90)
+        
+        
+        
+        
+        fill("Purple")
+        textAlign(CENTER, CENTER); 
+        textSize(100);
+        text(timer, width/2, height/17); // Count downtimer on screen
+  
+  
+    if (frameCount % 60 == 0 && timer > 0) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
+    timer --;
+    if (timer == 0) {
+    text("GAME OVER", width/2, height*0.7); // When timer hits 0 the screen shows the text "GAME OVER"
+    noLoop()
+  }
+  
+}
+  }
+         
+      // Object "Elo" will act as a loop for the ellipses making the countinously move upon the screen
+       function Elo(scale,speed,r,g,b) { 
+        this.x = random(width);
+        this.y = random(height);
+        this.speed = speed;
+        
+        this.move = function(){
+          this.x += speed;
+          if(this.x > width){
+            this.x = 0;
+          }
+        }
+        
+        this.display = function(){
+          fill(r,g,b);
+          ellipse(this.x,this.y,200*scale,100*scale);
+        }
+      }
+                
+                
+            
+        
+      
+    
+        
+        
+        
+       
+       
+    </script>
+</head>
+
+<body>
+<form><input TYPE="button" onClick="history.go(0)" value="Reset"></form>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/GillespieSe/p5ss/blob/master/seek.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
+
+</html>
